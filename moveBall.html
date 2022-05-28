@@ -1,0 +1,57 @@
+
+<div id="ball" style="
+    z-index:5;
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:green"></div>
+
+</div>
+
+<script>
+
+
+var positionX = 0;
+var positionY = 0;
+var velocity = 50;
+var reverse = true;
+var ball = document.getElementById('ball');
+
+function moveBall() {
+  
+  var Xmin = 0;
+  var Xmax = 300;
+  var Ymin = 0;
+  var Ymax = 300;
+  if (positionX == Xmax){
+    reverse = !reverse;
+  } else if (positionX == Xmin){
+    reverse = true;
+  }
+  if (reverse) {
+    positionX = positionX + velocity; 
+  } else { 
+    positionX = positionX - velocity;  
+  }
+  if (positionY == Ymax){
+    reverse = !reverse;
+  } else if (positionY == Ymin){
+    reverse = true;
+  }
+  if (reverse){
+    positionY = positionY + velocity;
+  } else{
+    positionY = positionY - velocity;
+  }
+  ball.style.left = `${positionX}px`;
+  ball.style.top = `${positionY}px`;
+
+}
+
+
+setInterval(moveBall, 100);
+
+</script>
